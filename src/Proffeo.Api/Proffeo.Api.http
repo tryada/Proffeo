@@ -1,0 +1,47 @@
+### http://localhost:5050 - docker, https://localhost:7083 - local
+@HostAddress = http://localhost:5050
+@JwtToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDMxMTY0NzgsImlzcyI6InByb2ZmZW8tYXBpIiwiYXVkIjoiZXZlcnlvbmUifQ.j8HGAgFUBBDz49mvGmgfCSjJxQ09Rtc8QEOkrtMFT8U
+
+GET {{HostAddress}}/api/Token
+
+###
+
+GET {{HostAddress}}/api/Users
+Authorization: Bearer {{JwtToken}}
+
+###
+
+GET {{HostAddress}}/api/Users?page=1&pageSize=4
+Authorization: Bearer {{JwtToken}}
+
+###
+
+GET {{HostAddress}}/api/Users/8b9e81a1-b86f-4149-abe2-1f67f0a0c7cd
+Authorization: Bearer {{JwtToken}}
+
+###
+
+POST {{HostAddress}}/api/users
+Authorization: Bearer {{JwtToken}}
+Content-Type: application/json
+
+{
+    "name": "test",
+    "email": "test.test@example.com"
+}
+
+###
+
+PUT {{HostAddress}}/api/users/d74e67d2-c869-473b-86e4-a7f6c6c5eda5
+Authorization: Bearer {{JwtToken}}
+Content-Type: application/json
+
+{
+  "name": "test",
+  "email": "test@test.pl"
+}
+
+###
+
+DELETE {{HostAddress}}/api/Users/8b9e81a1-b86f-4149-abe2-1f67f0a0c7cd
+Authorization: Bearer {{JwtToken}}
